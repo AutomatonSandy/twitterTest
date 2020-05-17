@@ -14,9 +14,10 @@ public class ClassThree {
 		System.out.println("This is method eight");
 	}
 	
-	@Test(priority=10)
-	public void method9() {
+	@Test(priority=10, expectedExceptions = NumberFormatException.class)
+	public void method9()throws NumberFormatException {
 		System.out.println("This is method 9");
+		throw new NumberFormatException();		
 	}
 
 }
