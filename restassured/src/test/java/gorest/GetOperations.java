@@ -7,6 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import restmodels.Users;
 
 public class GetOperations {
 	RequestSpecification requestSpec = RestAssured.given();
@@ -18,14 +19,12 @@ public class GetOperations {
 		System.out.println("1");
 		try {
 		String url = "https://gorest.co.in/public-api/users";
-		response = requestSpec
+		Users users = requestSpec
 		.auth().preemptive().basic("KBjJ6_fgNmanrvNxHz4bb78VyH4scWQHxCDY", "pass")
 		.when().get(url)
-		.then().contentType(ContentType.JSON).extract().response();
-		System.out.println(2);
-		System.out.println(response.getStatusCode());
-		System.out.println(response.getContentType());
-		System.out.println(response.jsonPath().getString("result[0]"));
+		.then().contentType(ContentType.JSON).extract().response().as(Users.class);
+		System.out.println(users.getMeta().getMessage());
+		System.out.println(users.getResult().get(0).getAddress());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
