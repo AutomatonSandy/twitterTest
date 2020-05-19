@@ -38,6 +38,6 @@ public class Swaglabs_Loginpage {
 		passWord.sendKeys("secret_sauce");
 		loginButton.click();
 	}
-	
+	//dummy commit
 	
 }
