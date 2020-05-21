@@ -10,7 +10,9 @@ public class AddItemToCart {
 	
 	@Test(priority = 2)
 	public void addItemsToCart() {
-		inventory.addItemsToCart();
+		String item1="Sauce Labs Backpack";
+		String item2="Sauce Labs Bike Light";
+		inventory.addItemsToCart(item1, item2);
 		
 	}
 

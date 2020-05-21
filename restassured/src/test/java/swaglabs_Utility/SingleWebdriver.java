@@ -20,7 +20,8 @@ public class SingleWebdriver {
 		}
 	}
 	
-	public static WebDriver getWebDriver(String browser) {
+	public static WebDriver getWebDriver() {
+		String browser=System.getProperty("browser");
 		if (driver == null) {
 			new SingleWebdriver(browser);
 		}

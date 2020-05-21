@@ -13,11 +13,13 @@ public class Swaglabs_InventoryPage {
 	@FindBy(className ="product_label")
 	WebElement productLabel;
 	
+	@FindBy(xpath="//div[@class ='shopping_cart_container' ]//a")
+	WebElement cartLink;
+	
 	WebDriver driver;
-	SingleWebdriver singleTon;
 	
 	public Swaglabs_InventoryPage() {
-		driver = singleTon.getWebDriver("chrome");
+		driver = SingleWebdriver.getWebDriver();
 		System.out.println("driver "+driver);
 		PageFactory.initElements(driver, this);
 	}
@@ -34,16 +36,16 @@ public class Swaglabs_InventoryPage {
 		return item;
 	}
 	
-	private void addToCart(String item1, String item2) {
+	private void addToCart(String item1) {
 		getItems(item1).click();
-		getItems(item2).click();
-		
+	}
+	
+private void clickOnCheckout() {
+		cartLink.click();
 	}
 
-	public void addItemsToCart() {
+	public void addItemsToCart(String item1, String item2) {
 		System.out.println("inside add items");
-		String item1="Sauce Labs Backpack";
-		String item2="Sauce Labs Bike Light";
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
@@ -52,6 +54,10 @@ public class Swaglabs_InventoryPage {
 		}
 		System.out.println("before validate index page");
 		validateIndexPage();
-		addToCart(item1, item2);
+		addToCart(item1);
+		addToCart(item2);
+		cartLink.click();
 	}
+	
+	
 }
