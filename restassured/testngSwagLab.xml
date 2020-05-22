@@ -5,6 +5,7 @@
     <classes>
       <class name="swaglabs_tests.LoginTest"/>
       <class name="swaglabs_tests.AddItemToCart"/>
+      <class name="swaglabs_tests.YourCartTest"></class>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
