@@ -3,14 +3,14 @@ package swaglabs_Utility;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 
-public class Cleanup {	
+public class BaseClass {	
 	 WebDriver driver;
 	
-	public Cleanup() {
+	public BaseClass() {
 		this.driver = SingleWebdriver.getWebDriver();
 	}
     
-	@AfterSuite
+	@AfterSuite(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("Quitting webdriver");
 		driver.quit();
