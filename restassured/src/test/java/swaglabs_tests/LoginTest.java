@@ -2,9 +2,10 @@ package swaglabs_tests;
 
 import org.testng.annotations.Test;
 
+import swaglabs_Utility.BaseClass;
 import swaglabs_pages.Swaglabs_Loginpage;
 
-public class LoginTest {
+public class LoginTest extends BaseClass{
 	
 	@Test(priority =1)
 	public void TestMethod() {
