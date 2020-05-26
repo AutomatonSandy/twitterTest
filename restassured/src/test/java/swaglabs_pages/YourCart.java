@@ -22,6 +22,9 @@ public class YourCart {
 	@FindBy(xpath = "//div[@class='subheader']")
 	WebElement yourCartPageLabel;
 	
+	@FindBy(linkText = "CHECKOUT")
+	WebElement checkoutLink;
+	
 	WebDriver driver;
 	WebElementUtility elementUtility = new WebElementUtility();
 	public YourCart() {
@@ -48,5 +51,6 @@ public class YourCart {
 	public void validateCartSizeAndCheckout(int size) {
 		validatePageLabel();
 		validateItemCount(size);
+		checkoutLink.click();
 	}
 }
