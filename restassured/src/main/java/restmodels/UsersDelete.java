@@ -1,16 +1,17 @@
 package restmodels;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class UsersPost {
+public class UsersDelete {
 	@JsonProperty("_meta")
 	_Meta _meta;
-	@JsonProperty("result")
+	@JsonIgnore
 	Result result;
 
-	public UsersPost() {}
+	public UsersDelete() {}
 
-	public UsersPost(_Meta _meta, Result result) {
+	public UsersDelete(_Meta _meta, Result result) {
 		this._meta = _meta;
 		this.result = result;
 	}

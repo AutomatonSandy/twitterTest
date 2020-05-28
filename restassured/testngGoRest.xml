@@ -5,6 +5,7 @@
     <classes>
       <class name="gorest.GetOperations"/>
       <class name="gorest.PostOperations"/>
+      <class name="gorest.DeleteOperations"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

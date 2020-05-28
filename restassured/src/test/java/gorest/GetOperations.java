@@ -17,6 +17,7 @@ public class GetOperations {
 	public void httpAuthBasic() {
 		System.out.println("1");
 		try {
+		System.out.println("Starting Get Operation");	
 		String url = "https://gorest.co.in/public-api/users";
 		Users users = requestSpec
 		.auth().preemptive().basic("KBjJ6_fgNmanrvNxHz4bb78VyH4scWQHxCDY", "pass")
@@ -24,6 +25,7 @@ public class GetOperations {
 		.then().contentType(ContentType.JSON).extract().response().as(Users.class);
 		System.out.println(users.getMeta().getMessage());
 		System.out.println(users.getResult().get(0).getAddress());
+		System.out.println("========= Get Operation Success ================================");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
