@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TestNgFeaturesSuite">
+	<listeners>
+		<listener class-name="project_utility.AnnotationModifier"/>
+	</listeners>
+	<test thread-count="5" name="Test Order">
+		<classes>
+			<class name="testngfeatures.ClassB" />
+			<class name="testngfeatures.ClassC" />
+			<class name="testngfeatures.ClassD" />
+		</classes>
+	</test>
+</suite> <!-- TestNgFeaturesSuite -->
