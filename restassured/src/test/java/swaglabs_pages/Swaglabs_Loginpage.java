@@ -20,7 +20,9 @@ public class Swaglabs_Loginpage {
 	WebDriver driver;
 
 	public Swaglabs_Loginpage() {
+		System.out.println("login page constructor");
 		driver = SingleWebdriver.getWebDriver();
+		System.out.println(driver);
 		PageFactory.initElements(driver, this);
 	}
 	
