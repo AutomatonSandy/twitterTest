@@ -2,10 +2,10 @@ package swaglabs_tests;
 
 import org.testng.annotations.Test;
 
-import swaglabs_Utility.BaseClass;
+
 import swaglabs_pages.Overview;
 
-public class OverviewTest extends BaseClass{
+public class OverviewTest extends project_utility.BaseClass{
 
 	Overview overView = new Overview();
 	

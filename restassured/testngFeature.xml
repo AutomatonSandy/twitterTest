@@ -3,6 +3,7 @@
 <suite name="TestNgFeaturesSuite">
 	<listeners>
 		<listener class-name="project_utility.AnnotationModifier"/>
+		<listener class-name="project_utility.TestListener"></listener>
 	</listeners>
 	<test thread-count="5" name="Test Order">
 		<classes>

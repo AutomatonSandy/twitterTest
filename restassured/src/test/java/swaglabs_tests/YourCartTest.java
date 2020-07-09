@@ -2,7 +2,7 @@ package swaglabs_tests;
 
 import org.testng.annotations.Test;
 
-import swaglabs_Utility.BaseClass;
+import project_utility.BaseClass;
 import swaglabs_pages.YourCart;
 
 public class YourCartTest extends BaseClass{

@@ -1,9 +1,12 @@
 package swaglabs_pages;
 
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import swaglabs_Utility.SingleWebdriver;
 
@@ -32,6 +35,7 @@ public class Swaglabs_Loginpage {
 		driver.manage().window().maximize();
 	}
 	public void fillUserName_and_Login(String userNameValue, String passWordValue) {
+		Assert.assertTrue(driver.getTitle().equals("Swag Labs"));
 		userName.sendKeys(userNameValue);
 		passWord.sendKeys(passWordValue);
 		loginButton.click();

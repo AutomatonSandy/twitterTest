@@ -26,6 +26,7 @@ public class PostOperations {
 		result.setFirst_name("Sandipan");
 		result.setLast_name("Sandy");
 		result.setEmail("sandy_"+random+"@gmail.com");
+		result.setPhone("6184130226");
 		result.setGender("male");
 		//resultList.add(result);
 		return result;
