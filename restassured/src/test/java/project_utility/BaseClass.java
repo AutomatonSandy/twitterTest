@@ -11,8 +11,6 @@ import swaglabs_Utility.SingleWebdriver;
 
 public class BaseClass {	
 	 public static WebDriver driver;
-	 public ExtentReports rep = ExtentManager.getInstance();
-	 public static ExtentTest test;
 	
 	@BeforeSuite 
 	public void setUp() {
