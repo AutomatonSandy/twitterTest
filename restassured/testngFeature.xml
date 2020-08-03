@@ -7,9 +7,9 @@
 	</listeners>
 	<test thread-count="5" name="Test Order">
 		<classes>
-			<class name="testngfeatures.ClassB" />
-			<class name="testngfeatures.ClassC" />
-			<class name="testngfeatures.ClassD" />
+			<!--  <class name="testngfeatures.ClassOne" /> -->
+			<class name="testngfeatures.ClassTwo" />
+			<class name="testngfeatures.ClassThree" />
 		</classes>
 	</test>
 </suite> <!-- TestNgFeaturesSuite -->

@@ -1,14 +1,19 @@
-package gorest_utility;
+package project_utility;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.IllegalFormatException;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.binary.XSSFBRecordType;
 
 public class ExcelReaderUtility {
 
@@ -105,19 +110,28 @@ public class ExcelReaderUtility {
 		int numberOfRowsOfTestCase=findTheNumberOfRowsInATestCase();
 		int testCaseStartingColumnNum=getFoundColumn_StartOfTestCase()+1; //because the data of the test case starts from the second column
 		int numberOfColumnInTheTestCase=findTheNumberOfColumnsInA_TestCase();
+		DataFormatter objDefaultFormat = new DataFormatter();
 
-		Object[][] testDataArray =new String[numberOfRowsOfTestCase][numberOfColumnInTheTestCase];
+		Object[][] testDataArray = new Object[numberOfRowsOfTestCase][1];
 		int rowCount=0;
-//		int columnCount=0;
+		Row headerRow=sheet.getRow(getFoundRow_StartOfTestCase());
 		for(int rowIterator=testCaseStartingRowNum;rowIterator<testCaseStartingRowNum+numberOfRowsOfTestCase;rowIterator++){
 			Row row=sheet.getRow(rowIterator);
+			Hashtable<String, String> table = new Hashtable<String, String>();
 			for(int columnIterator=testCaseStartingColumnNum;columnIterator<=numberOfColumnInTheTestCase;columnIterator++){				
 				Cell cell=row.getCell(columnIterator);
-				testDataArray[rowCount][columnIterator-1]=cell.getRichStringCellValue().toString();
+				String cellValue;
+//				if(cell.getCellType() == CellType.NUMERIC) {
+//					cellValue = cell.getNumericCellValue()
+//				}
+				cellValue = objDefaultFormat.formatCellValue(cell);
+				table.put(headerRow.getCell(columnIterator).toString(), cellValue);
 			}
+			System.out.println(table);
+			testDataArray[rowCount][0] = table;
 			rowCount++;
+			
 		}
-
 		return testDataArray;
 	}
 
