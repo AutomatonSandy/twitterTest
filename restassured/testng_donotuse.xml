@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="gorest.GetOperations"/>
+      <class name="testngfeatures.ClassTwo"/>
+      <class name="gorest.PostOperations"/>
+      <class name="swaglabs_pages.Overview"/>
+      <class name="testngfeatures.ClassOne"/>
+      <class name="factoryPackage.FactoryClass1"/>
+      <class name="swaglabs_tests.CheckoutTest"/>
+      <class name="swaglabs_tests.YourCartTest"/>
+      <class name="swaglabs_tests.LoginTest"/>
+      <class name="worksafeBC_Test.WorksafeBC_HomePageTest"/>
+      <class name="gorest.DeleteOperations"/>
+      <class name="project_utility.BaseClass"/>
+      <class name="swaglabs_tests.AddItemToCart"/>
+      <class name="testngfeatures.ClassD"/>
+      <class name="worksafeBC_Test.WorksafeBC_HomePageTest2"/>
+      <class name="testngfeatures.ClassThree"/>
+      <class name="swaglabs_tests.OverviewTest"/>
+      <class name="testngfeatures.ClassB"/>
+      <class name="testngfeatures.ClassC"/>
+      <class name="swaglabs_tests.FinishTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,10 +1,8 @@
 package project_utility;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.IllegalFormatException;
-import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -13,7 +11,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.xssf.binary.XSSFBRecordType;
 
 public class ExcelReaderUtility {
 
@@ -25,9 +22,11 @@ public class ExcelReaderUtility {
 	private String testCaseName;
 
 	private final String filePathFixedPart=System.getProperty("user.dir")+"//src//test//java//datafiles//";
+	DataFormatter objDefaultFormat = new DataFormatter();
 	
 	public ExcelReaderUtility(String fileName, String sheetName, String testCaseName){
 		this.testCaseName=testCaseName;
+		System.out.println("--------"+testCaseName);
 		String filePath=filePathFixedPart+fileName;
 		initializeWorkbook(filePath);
 		initializeSheet(sheetName);
@@ -53,9 +52,11 @@ public class ExcelReaderUtility {
 		try{
 			for(Row row:sheet){			
 				for(Cell cell:row){	
-					if(cell.getRichStringCellValue().getString().equals(testCaseName)){
+					if(objDefaultFormat.formatCellValue(cell).equals(testCaseName)){
+						System.out.println("found test case "+testCaseName);
 						found=true; 
 						setFoundRow_StartOfTestCase(row.getRowNum());  
+						System.out.println("column index"+cell.getColumnIndex());
 						setFoundColumn_StartOfTestCase(cell.getColumnIndex());
 						break;
 					}				
@@ -79,7 +80,7 @@ public class ExcelReaderUtility {
 				}
 			}
 		}catch(NullPointerException exception){
-			System.out.println("Check if the test case exist in the excel sheet"+exception.getMessage());
+			System.out.println("Check if the test case exist in the excel sheet "+exception.getMessage());
 		}
 
 		int numberOfLinesOfTestData=(getFoundRow_EndOfTestCase()-getFoundRow_StartOfTestCase())-1;
@@ -110,7 +111,6 @@ public class ExcelReaderUtility {
 		int numberOfRowsOfTestCase=findTheNumberOfRowsInATestCase();
 		int testCaseStartingColumnNum=getFoundColumn_StartOfTestCase()+1; //because the data of the test case starts from the second column
 		int numberOfColumnInTheTestCase=findTheNumberOfColumnsInA_TestCase();
-		DataFormatter objDefaultFormat = new DataFormatter();
 
 		Object[][] testDataArray = new Object[numberOfRowsOfTestCase][1];
 		int rowCount=0;
@@ -141,6 +141,7 @@ public class ExcelReaderUtility {
 	}
 
 	private void setFoundRow_StartOfTestCase(int foundRow_StartOfTestCase) {
+		System.out.println("row number"+foundRow_StartOfTestCase);
 		this.foundRow_StartOfTestCase = foundRow_StartOfTestCase;
 	}
 
@@ -163,11 +164,6 @@ public class ExcelReaderUtility {
 	private String getTestCaseName() {
 		return testCaseName;
 	}
-
-	private void setTestCaseName(String testCaseName) {
-		this.testCaseName = testCaseName;
-	}
-
 
 
 

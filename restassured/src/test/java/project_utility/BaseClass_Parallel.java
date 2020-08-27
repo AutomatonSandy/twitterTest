@@ -1,23 +1,21 @@
 package project_utility;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.Options;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import gherkin.deps.net.iharder.Base64.InputStream;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 public class BaseClass_Parallel {
 
@@ -25,6 +23,9 @@ public class BaseClass_Parallel {
 	public FileInputStream fileInputStream;
 	public Properties property = new Properties();
 	public RemoteWebDriver driver = null;
+	public static ExtentReports report = ExtentManager.getExtentInstance();
+	public static ExtentTest extnt_test;
+	public static ThreadLocal<ExtentTest> thrd_ext_test = new ThreadLocal<ExtentTest>();
 
 	public WebDriver getDriver() {
 		return threadDriver.get();
@@ -34,8 +35,17 @@ public class BaseClass_Parallel {
 		threadDriver.set(driver);
 	}
 
+	public void setThreadSafe_Extent(ExtentTest extentTest) {
+		thrd_ext_test.set(extentTest);
+	}
+	public static ExtentTest getThreadSafeExtentTest() {
+		return thrd_ext_test.get();
+	}
+	
+	
 	public void setup(String browser) {
 		try {
+			getThreadSafeExtentTest().log(Status.INFO, "Opening instance of "+browser);
 			openBrowser(browser);
 			openUrl_In_Browser();
 		} catch (IOException e) {
@@ -73,6 +83,7 @@ public class BaseClass_Parallel {
 	    if(env.equalsIgnoreCase("dev")) {
 	       url=property.getProperty("dev.url");
 	    }
+	   getThreadSafeExtentTest().log(Status.INFO, "Opening url "+url);
 		getDriver().get(url);
 	}
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="Suite" parallel="classes">
+  <test thread-count="2" name="HomePagePopularLinkTest" parallel="classes">
+    <classes>
+      <class name="worksafeBC_Test.WorksafeBC_HomePageTest"/>
+    </classes>
+  </test> <!-- Test -->
+   <test thread-count="2" name="HomePageInfoByTopicTest" parallel="classes">
+    <classes>
+      <class name="worksafeBC_Test.WorksafeBC_HomePage_InfoByTopic_Test"/>
+    </classes>
+  </test>
+</suite> <!-- Suite -->

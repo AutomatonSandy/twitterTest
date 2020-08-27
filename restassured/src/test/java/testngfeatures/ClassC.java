@@ -2,7 +2,7 @@ package testngfeatures;
 
 import org.testng.annotations.Test;
 
-import gorest_utility.DataProviderClass;
+import project_utility.DataProviderClass;
 import project_utility.RetryOnFailure;
 
 public class ClassC {
